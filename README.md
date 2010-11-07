@@ -1,4 +1,4 @@
-Lovely Rufus
+Ruby Spell Doctor
 ============
 
 Install
