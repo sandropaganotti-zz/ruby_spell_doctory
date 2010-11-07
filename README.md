@@ -13,7 +13,7 @@ Usage
 -----
 
     require 'lib/hunspell'
-    hunspell = Hunspell.new hunspell_library_path, aff_dictionary_file, dic_dictionary_file
+    hunspell = Hunspell.new "hunspell_library_full_path", "aff_dictionary_file_full_path" , "dic_dictionary_file_full_path"
     hunspell.spell 'asdasdas' 
     #=> 0 
     hunspell.spell 'hello'
