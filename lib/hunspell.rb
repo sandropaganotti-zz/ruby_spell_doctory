@@ -7,8 +7,9 @@ class Hunspell
     @bridge = Module.new do 
       extend FFI::Library
       ffi_lib(libdir)
-      attach_function :create, :Hunspell_create, [:string, :string], :pointer
-      attach_function :spell,  :Hunspell_spell,  [:pointer,:string], :int
+      attach_function :create,  :Hunspell_create, [:string,  :string], :pointer
+      attach_function :spell,   :Hunspell_spell,  [:pointer, :string], :int
+      attach_function :suggest, :Hunspell_suggest,[:pointer, :pointer, :string], :int;
     end
     # create the hunspell library object
     @hunspell = FFI::MemoryPointer.new :pointer
@@ -18,6 +19,14 @@ class Hunspell
   # returns 0 if words is not correct, not 0 otherwise
   def spell(word)
     @bridge.spell(@hunspell,word)
+  end
+  
+  # returns an array with suggested words of a given word ([] if no suggestions)
+  def suggest(word)
+    suggestions = FFI::MemoryPointer.new :pointer, 1
+    suggestions_number = @bridge.suggest(@hunspell,suggestions, word)
+    suggestion_pointer = suggestions.read_pointer
+    suggestion_pointer.null? ? [] : suggestion_pointer.get_array_of_string(0,suggestions_number).compact
   end
   
 end

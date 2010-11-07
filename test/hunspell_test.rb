@@ -20,4 +20,15 @@ describe Hunspell do
     @hunspell.spell("hello").should_not == 0
   end
   
+  it 'shows you suggestion of a bad-spelled word' do
+    suggestions = @hunspell.suggest('helllo')
+    suggestions.size.should > 0 
+    suggestions.include?('hello').should == true
+  end
+  
+  it 'show an empty suggestion array if does not find any suitable suggestion' do
+    suggestions = @hunspell.suggest('sdasdsdasdashdjakshdkashdkjasdhk')
+    suggestions.size.should == 0     
+  end
+  
 end
