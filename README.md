@@ -18,7 +18,7 @@ Configuration
 Test
 ----
 
-bundle exec rspec test/*
+    bundle exec rspec test/*
 
 Usage
 -----
