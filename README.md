@@ -37,7 +37,7 @@ Usage
 
 Credits
 -------
-All the dictionaries, used for testing porpoise, placed under the /test/fixtures folder are
+All the dictionaries, used for testing purpose and placed under the /test/fixtures folder, are
 not created by me and belongs from the official OpenOffice dictionaries page: 
 http://wiki.services.openoffice.org/wiki/Dictionaries
 
