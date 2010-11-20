@@ -9,6 +9,17 @@ Install
 * Download this library in a folder of your choice
 * execute 'bundle install' from the root of this library
 
+Configuration
+-------------
+
+for usage: You need to change config/hunspell.yml in accordion to your library and dictionaries path.
+for test:  You need also to change config/hunspell.yml but only the 'library' param.
+
+Test
+----
+
+bundle exec rspec test/*
+
 Usage
 -----
 

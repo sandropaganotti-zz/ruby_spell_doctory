@@ -1,0 +1,10 @@
+library:  /Users/sandropaganotti/RMU/hunspell/src/src/hunspell/.libs/libhunspell-1.2.dylib
+dictionaries:
+  default: en
+  en:
+    aff: '/Users/sandropaganotti/RMU/hunspell/hunspell_en_dict/en_US.aff'
+    dic: '/Users/sandropaganotti/RMU/hunspell/hunspell_en_dict/en_US.dic'
+  it:
+    aff: '/Users/sandropaganotti/RMU/hunspell/hunspell_it_dict/it_IT.aff'
+    dic: '/Users/sandropaganotti/RMU/hunspell/hunspell_it_dict/it_IT.dic'
+  
