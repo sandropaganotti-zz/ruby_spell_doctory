@@ -24,10 +24,15 @@ Usage
 -----
 
     require 'lib/hunspell'
-    hunspell = Hunspell.new "hunspell_library_full_path", "aff_dictionary_file_full_path" , "dic_dictionary_file_full_path"
+    hunspell = Hunspell.new 
     hunspell.spell 'asdasdas' 
     #=> 0 
     hunspell.spell 'hello'
+    #=> 1
+    hunspell.respawn_handler 'it'
+    hunspell.spell 'hello'
+    #=> 0
+    hunspell.spell 'ciao'
     #=> 1
 
 
