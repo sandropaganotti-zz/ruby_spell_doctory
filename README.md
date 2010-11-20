@@ -12,8 +12,8 @@ Install
 Configuration
 -------------
 
-for usage: You need to change config/hunspell.yml in accordion to your library and dictionaries path.
-for test:  You need also to change config/hunspell.yml but only the 'library' param.
+* *for usage:* You need to change config/hunspell.yml in accordion to your library and dictionaries path.
+* *for test:*  You need also to change config/hunspell.yml but only the 'library' param.
 
 Test
 ----
