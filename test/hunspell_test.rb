@@ -1,8 +1,14 @@
 require 'rspec'
+
+module Hunspell
+  # redefine this constant to your library before launching tests
+  LibraryPath = "/Users/sandropaganotti/RMU/hunspell/src/src/hunspell/.libs/libhunspell-1.2.dylib"
+end
+
 require File.dirname(__FILE__) + "/../lib/hunspell"
 
 
-describe Hunspell do
+describe Hunspell::Hunspell do
   before :each do 
     Hunspell::Configuration['dictionaries'].merge({
       'en' => {
@@ -15,16 +21,13 @@ describe Hunspell do
       }
     })
     
-    @hunspell = Hunspell.new()
+    @hunspell = Hunspell::Hunspell.new()
   end
   
-  it 'loads the dynamic hunspell library' do
-    @hunspell.instance_variable_get('@bridge').should be_a_kind_of(Module)
-  end
   
   it 'lets you check for a given phrase' do
-    @hunspell.spell("asdasdsadssad").should == 0
-    @hunspell.spell("hello").should_not == 0
+    @hunspell.spelled_correctly?("asdasdsadssad").should be_false
+    @hunspell.spelled_correctly?("hello").should be_true
   end
   
   it 'shows you suggestion of a bad-spelled word' do
@@ -40,7 +43,7 @@ describe Hunspell do
   
   it 'lets you change language (if present in config)' do
     @hunspell.respawn_handler('it')
-    @hunspell.spell("ciao").should_not == 0
+    @hunspell.spelled_correctly?("ciao").should be_true
   end
   
 end
@@ -49,14 +52,12 @@ describe Hunspell do
   
   it 'loads correctly the default config obj' do
     Hunspell::Configuration.should_not be_nil
-    Hunspell::Configuration.should include 'library'
     Hunspell::Configuration.should include 'dictionaries'
   end
   
   it 'lets you specify an alternative config obj' do 
-    @another_config = Hunspell.new(
-      { 'library'       => Hunspell::Configuration['library'],
-        'dictionaries'  => {
+    @another_config = Hunspell::Hunspell.new(
+      { 'dictionaries'  => {
           'default' => 'eo',
           'eo' => {
             'aff' => File.join(File.dirname(__FILE__),'fixtures','eo_l3.aff'),

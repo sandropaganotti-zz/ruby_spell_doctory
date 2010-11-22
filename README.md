@@ -12,27 +12,33 @@ Install
 Configuration
 -------------
 
-* *for usage:* You need to change config/hunspell.yml in accordion to your library and dictionaries path.
-* *for test:*  You need also to change config/hunspell.yml but only the 'library' param.
+* *for usage:* You need to change config/hunspell.yml in accordion to your dictionaries path.
+* *for test:*  You need also to change config/hunspell.yml.
+* *for both:*  You need to set the Hunspell::LibraryPath constants pointing to your library url
 
 Test
 ----
+*remember to change the LibraryPath value inside testfile according to your path
 
     bundle exec rspec test/*
 
 Usage
 -----
 
+    module Hunspell
+        LibraryPath = '/path/to/your/hunspell.dylib'
+    end
     require 'lib/hunspell'
+    include Hunspell
     hunspell = Hunspell.new 
-    hunspell.spell 'asdasdas' 
+    hunspell.spelled_correctly? 'asdasdas' 
     #=> 0 
-    hunspell.spell 'hello'
+    hunspell.spelled_correctly? 'hello'
     #=> 1
     hunspell.respawn_handler 'it'
-    hunspell.spell 'hello'
+    hunspell.spelled_correctly? 'hello'
     #=> 0
-    hunspell.spell 'ciao'
+    hunspell.spelled_correctly? 'ciao'
     #=> 1
 
 Credits
