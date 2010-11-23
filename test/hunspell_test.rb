@@ -2,7 +2,7 @@ require 'rspec'
 
 module Hunspell
   # redefine this constant to your library before launching tests
-  LibraryPath = "/Users/sandropaganotti/RMU/hunspell/src/src/hunspell/.libs/libhunspell-1.2.dylib"
+  LIBRARY_PATH = "/Users/sandropaganotti/RMU/hunspell/src/src/hunspell/.libs/libhunspell-1.2.dylib"
 end
 
 require File.dirname(__FILE__) + "/../lib/hunspell"
@@ -10,7 +10,7 @@ require File.dirname(__FILE__) + "/../lib/hunspell"
 
 describe Hunspell::Hunspell do
   before :each do 
-    Hunspell::Configuration['dictionaries'].merge({
+    Hunspell::CONFIGURATION['dictionaries'].merge({
       'en' => {
         'aff' => File.join(File.dirname(__FILE__),'fixtures','en_US.aff'),
         'dic' => File.join(File.dirname(__FILE__),'fixtures','en_US.dif')
@@ -51,8 +51,8 @@ end
 describe Hunspell do
   
   it 'loads correctly the default config obj' do
-    Hunspell::Configuration.should_not be_nil
-    Hunspell::Configuration.should include 'dictionaries'
+    Hunspell::CONFIGURATION.should_not be_nil
+    Hunspell::CONFIGURATION.should include 'dictionaries'
   end
   
   it 'lets you specify an alternative config obj' do 
