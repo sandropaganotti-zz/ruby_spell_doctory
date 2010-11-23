@@ -16,7 +16,7 @@ module Hunspell
       )
     end
   
-    # returns 0 if words is not correct, not 0 otherwise
+    # returns true if words is not correct, false otherwise
     def spelled_correctly?(word)
       Wrapper.spell(@hunspell,word) != 0
     end
