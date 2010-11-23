@@ -6,7 +6,7 @@ module Hunspell
     def initialize(config_obj = nil)
       @dicts = bootstrap(config_obj || CONFIGURATION)        
       respawn_handler('default')
-    end 
+    end
   
     def respawn_handler(dictionary)
       # create the hunspell library object
