@@ -14,7 +14,7 @@ Configuration
 
 * *for usage:* You need to change config/hunspell.yml in accordion to your dictionaries path.
 * *for test:*  You need also to change config/hunspell.yml.
-* *for both:*  You need to set the Hunspell::LibraryPath constants pointing to your library url
+* *for both:*  You need to set the Hunspell::LIBRARY_PATH constants pointing to your library url
 
 Test
 ----
@@ -26,7 +26,7 @@ Usage
 -----
 
     module Hunspell
-        LibraryPath = '/path/to/your/hunspell.dylib'
+        LIBRARY_PATH = '/path/to/your/hunspell.dylib'
     end
     require 'lib/hunspell'
     include Hunspell
